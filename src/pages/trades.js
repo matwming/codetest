@@ -188,7 +188,7 @@ export default function trades() {
  useEffect(() => {
   cancelSource2.current = CancelToken.source();
   localStorage.setItem("trade", JSON.stringify(formData));
-  getFilteredData(pagination.number, pagination.size);
+  getFilteredData(1, pagination.size);
   return () => {
    cancelSource2.current.cancel();
   };
@@ -196,7 +196,7 @@ export default function trades() {
  const search = () => {
   //console.log(formData);
   localStorage.setItem("trade", JSON.stringify(formData));
-  getFilteredData(pagination.number, pagination.size);
+  getFilteredData(1, pagination.size);
  };
 
  // getFilteredData function is used to compose a complete URL, and send it to the server

@@ -154,7 +154,8 @@ export default function withdraws() {
  useEffect(() => {
   cancelSource2.current = CancelToken.source();
   localStorage.setItem("withdraws", JSON.stringify(formData));
-  getFilteredData(pagination.number, pagination.size);
+  //console.log("useeffect", pagination);
+  getFilteredData(1, pagination.size);
   return () => {
    cancelSource2.current.cancel();
   };
@@ -162,7 +163,7 @@ export default function withdraws() {
  const search = () => {
   //console.log(formData);
   localStorage.setItem("withdraws", JSON.stringify(formData));
-  getFilteredData(pagination.number, pagination.size);
+  getFilteredData(1, pagination.size);
  };
  const getFilteredData = (number, size) => {
   let createdParameter = getParameters("created");
@@ -170,6 +171,7 @@ export default function withdraws() {
   let amountParameter = getParameters("amount");
   let bankRefNumParameter = getParameters("bankReferenceNumber");
   let statusParameter = getParameters("status");
+
   instance
    .get(
     `/withdraws.json?${createdParameter}&&${uuidParameter}&&${amountParameter}&&${bankRefNumParameter}&&${statusParameter}&&pagination[number]=${number}&&pagination[size]=${size}`
@@ -186,9 +188,10 @@ export default function withdraws() {
    .catch(err => console.log(err));
  };
  const currentPageChange = currentPage => {
-  setPagination({ ...pagination, number: currentPage });
-  let number = pagination.size;
-  getFilteredData(currentPage, number);
+  // setPagination({ ...pagination, number: currentPage });
+  // let number = pagination.size;
+  console.log(currentPage);
+  getFilteredData(currentPage, pagination.size);
  };
 
  const pageSizeChange = pageSize => {
