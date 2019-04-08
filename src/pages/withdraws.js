@@ -85,8 +85,8 @@ export default function withdraws() {
      setTableData(res.data.withdraws),
      setPagination(res.data.pagination),
      setOption(res.data.option),
-     setLoading(false),
-     console.log(res)
+     setLoading(false)
+     //console.log(res)
     );
    })
    .catch(res => console.log(res));
@@ -179,8 +179,8 @@ export default function withdraws() {
      setTableData(res.data.withdraws),
      setPagination(res.data.pagination),
      setOption(res.data.option),
-     setLoading(false),
-     console.log(res)
+     setLoading(false)
+     //console.log(res)
     );
    })
    .catch(err => console.log(err));
